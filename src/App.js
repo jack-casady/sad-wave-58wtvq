@@ -970,20 +970,53 @@ function Layout({ children }) {
   const navy = '#1a365d';
   const gold = '#c9a227';
   const cream = '#f7f5f0';
+  const white = '#ffffff';
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: cream, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <header style={{ backgroundColor: navy, padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ width: '36px', height: '36px', backgroundColor: gold, borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', color: navy, fontSize: '18px' }}>B</div>
-          <div>
-            <div style={{ color: 'white', fontWeight: '600', fontSize: '16px' }}>BECK BODE</div>
-            <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '10px', letterSpacing: '1px' }}>WEALTH MANAGEMENT</div>
-          </div>
-        </div>
+        
+        {/* --- LEFT: LOGO --- */}
+        <a href="https://beckbode.com" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img 
+            src="https://beckbode.com/hs-fs/hubfs/beck-bode-logo-dark.webp?width=1378&height=392&name=beck-bode-logo-dark.webp" 
+            alt="Beck Bode" 
+            style={{ 
+              height: '40px', 
+              objectFit: 'contain',
+              // This filter turns the dark logo white to match the Navy background. 
+              // Delete this line if you ever change the header color to white.
+              filter: 'brightness(0) invert(1)' 
+            }} 
+          />
+        </a>
+
+        {/* --- RIGHT: HOME BUTTON --- */}
+        <a 
+          href="https://beckbode.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ 
+            color: white, 
+            textDecoration: 'none', 
+            fontSize: '14px', 
+            fontWeight: '600',
+            border: '1px solid ' + gold,
+            padding: '8px 16px',
+            borderRadius: '4px',
+            transition: 'background 0.2s',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px'
+          }}
+        >
+          <span>Visit Website</span>
+          <span style={{ fontSize: '16px' }}>→</span>
+        </a>
+
       </header>
       
-      {/* UPDATE: Reduced padding and added overflowX hidden for mobile polish */}
+      {/* Main Content Area */}
       <main style={{ padding: '32px 16px 80px', maxWidth: '100%', overflowX: 'hidden' }}>{children}</main>
       
       <footer style={{ backgroundColor: navy, padding: '14px 24px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
