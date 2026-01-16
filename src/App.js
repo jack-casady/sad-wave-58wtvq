@@ -965,65 +965,67 @@ Difference: ${formatCurrency(results.futureValueEquity - results.futureValue6040
     </Layout>
   );
 }
-
 function Layout({ children }) {
   const navy = '#1a365d';
   const gold = '#c9a227';
   const cream = '#f7f5f0';
   const white = '#ffffff';
 
+  // Check if we are embedded inside an iframe (like on your website)
+  const isEmbedded = window.self !== window.top;
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: cream, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      <header style={{ backgroundColor: navy, padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        
-        {/* --- LEFT: LOGO --- */}
-        <a href="https://beckbode.com" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <img 
-            src="https://beckbode.com/hs-fs/hubfs/beck-bode-logo-dark.webp?width=1378&height=392&name=beck-bode-logo-dark.webp" 
-            alt="Beck Bode" 
+      
+      {/* Only show the Header if we are NOT embedded */}
+      {!isEmbedded && (
+        <header style={{ backgroundColor: navy, padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <a href="https://beckbode.com" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img 
+              src="https://beckbode.com/hs-fs/hubfs/beck-bode-logo-dark.webp?width=1378&height=392&name=beck-bode-logo-dark.webp" 
+              alt="Beck Bode" 
+              style={{ 
+                height: '40px', 
+                objectFit: 'contain',
+                filter: 'brightness(0) invert(1)' 
+              }} 
+            />
+          </a>
+          <a 
+            href="https://beckbode.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
             style={{ 
-              height: '40px', 
-              objectFit: 'contain',
-              // This filter turns the dark logo white to match the Navy background. 
-              // Delete this line if you ever change the header color to white.
-              filter: 'brightness(0) invert(1)' 
-            }} 
-          />
-        </a>
-
-        {/* --- RIGHT: HOME BUTTON --- */}
-        <a 
-          href="https://beckbode.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{ 
-            color: white, 
-            textDecoration: 'none', 
-            fontSize: '14px', 
-            fontWeight: '600',
-            border: '1px solid ' + gold,
-            padding: '8px 16px',
-            borderRadius: '4px',
-            transition: 'background 0.2s',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px'
-          }}
-        >
-          <span>Visit Website</span>
-          <span style={{ fontSize: '16px' }}>→</span>
-        </a>
-
-      </header>
+              color: white, 
+              textDecoration: 'none', 
+              fontSize: '14px', 
+              fontWeight: '600',
+              border: '1px solid ' + gold,
+              padding: '8px 16px',
+              borderRadius: '4px',
+              transition: 'background 0.2s',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <span>Visit Website</span>
+            <span style={{ fontSize: '16px' }}>→</span>
+          </a>
+        </header>
+      )}
       
       {/* Main Content Area */}
       <main style={{ padding: '32px 16px 80px', maxWidth: '100%', overflowX: 'hidden' }}>{children}</main>
       
-      <footer style={{ backgroundColor: navy, padding: '14px 24px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
-        <span style={{ color: gold, fontStyle: 'italic', fontSize: '14px' }}>What's your dream?</span>
-        <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-        <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>beckbode.com</span>
-      </footer>
+      {/* Only show Footer if NOT embedded (optional - remove !isEmbedded if you want the footer everywhere) */}
+      {!isEmbedded && (
+        <footer style={{ backgroundColor: navy, padding: '14px 24px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
+          <span style={{ color: gold, fontStyle: 'italic', fontSize: '14px' }}>What's your dream?</span>
+          <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
+          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>beckbode.com</span>
+        </footer>
+      )}
     </div>
   );
 }
