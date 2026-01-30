@@ -757,7 +757,7 @@ Difference: ${formatCurrency(results.futureValueEquity - results.futureValue6040
           <div style={{ display: 'flex', justifyContent: 'center', gap: '24px', marginTop: '16px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '16px', height: '3px', backgroundColor: gray, borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '13px', color: gray }}>60/40 Approach (7%)</span>
+              <span style={{ fontSize: '13px', color: gray }}>60/40 Approach (8%)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '16px', height: '3px', backgroundColor: gold, borderRadius: '2px' }}></div>
